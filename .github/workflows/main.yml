@@ -1,0 +1,28 @@
+name: Build Electron App
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: 20
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Build app for Windows, macOS, and Linux
+      run: npx electron-builder --publish never
+
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: penggajian-installers
+        path: dist/
