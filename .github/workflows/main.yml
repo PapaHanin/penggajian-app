@@ -21,8 +21,8 @@ jobs:
     - name: Build app for Windows, macOS, and Linux
       run: npx electron-builder --publish never
 
-    - name: Upload artifacts
-      uses: actions/upload-artifact@v3
+    - name: Upload installers
+      uses: actions/upload-artifact@v4
       with:
         name: penggajian-installers
         path: dist/
